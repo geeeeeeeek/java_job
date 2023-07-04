@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gk.study.mapper.PostMapper">
+
+
+    <select id="getCompanyPostList"  parameterType="map" resultType="com.gk.study.entity.Post">
+        select A.*, B.name,B.raw
+        from b_post as A
+                 join b_resume as B on (A.resume_id=B.id)
+        where 2>1
+        <if test="companyId != null">
+            and A.company_id=#{companyId}
+        </if>
+        order by A.create_time desc;
+    </select>
+
+</mapper>

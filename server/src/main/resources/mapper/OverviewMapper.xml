@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gk.study.mapper.OverviewMapper">
+
+    <select id="getPopularThing" resultType="java.util.HashMap">
+        select title, pv as count from b_thing order by pv desc limit 10;
+    </select>
+
+    <select id="getPopularClassification" resultType="java.util.HashMap">
+        select B.title, count(B.title) as count
+        from b_thing A join B_classification B on A.classification_id = B.id
+        group by B.title
+        order by count desc limit 5;
+    </select>
+
+    <select id="getWebVisitData" parameterType="java.lang.String" resultType="com.gk.study.entity.VisitData">
+        select re_ip, count(re_ip) as count
+        from b_op_log
+        <where>
+        <if test="day != null">
+            re_time like CONCAT('%',#{day},'%')
+        </if>
+        </where>
+        group by re_ip
+    </select>
+</mapper>
