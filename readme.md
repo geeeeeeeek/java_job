@@ -87,11 +87,14 @@ npm run dev
 
 
 
-### 待完善功能
+### 开发文档
 
-- 邮箱推送功能
-- 手机号绑定功能
-- 粉丝关注功能
+[点击进入](https://blog.csdn.net/net19880504/article/details/136728451)
+
+
+### 参考论文
+[点击进入](doc/java_job.docx)
+
 
 ### 付费咨询
 
